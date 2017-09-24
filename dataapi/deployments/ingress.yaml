@@ -19,6 +19,10 @@ spec:
   - host: cheeses.all
     http:
       paths:
+      - path: /00
+        backend:
+          serviceName: dataapi0-0
+          servicePort: 80
       - path: /01
         backend:
           serviceName: dataapi0-1
@@ -26,4 +30,12 @@ spec:
       - path: /02
         backend:
           serviceName: dataapi0-2
+          servicePort: 80
+      - path: /03
+        backend:
+          serviceName: dataapi0-3
+          servicePort: 80
+      - path: /04
+        backend:
+          serviceName: dataapi0-4
           servicePort: 80
