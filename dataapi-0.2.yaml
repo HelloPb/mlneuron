@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dataapi0-2
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: dataapi0-2
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: dataapi0-2
+          image: "dudime/dataapi:0.2"
+          ports:
+            - name: http
+              containerPort: 3000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: dataapi0-2
+spec:
+  selector:
+    app: dataapi0-2
+    tier: backend
+    track: stable
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http
